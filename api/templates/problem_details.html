@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem Details</title>
+</head>
+<body>
+    <h1>Problem Details</h1>
+    <h2>Problem Name: {{ problem.name }}</h2>
+        <h3>Problem Description: {{ problem.description }}</h3>
+    <strong>Telephone:</strong> {{ problem.telephone }}<br>
+        <strong>Email:</strong> {{ problem.email }}<br>
+        <strong>Description:</strong> {{ problem.description }}<br>
+        <strong>Date of Creation:</strong> {{ problem.date_of_creation }}<br>
+        <strong>Status: {{ problem.status }}</strong>
+
+    {% if problem.status != "completed" %}
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</body>
+</html>

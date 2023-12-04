@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem List</title>
+</head>
+<body>
+    <h1>Problem List</h1>
+ {% comment %}   {% if user %}
+        <h2>Welcome {% user.username %}</h2>
+    {% endif %}{% endcomment %}
+    <ul>
+        {% for problem in problems %}
+            {% if problem.status == 'In_progress' %}
+                <a href="{% url 'problem_details' problem.id %}">
+                <li>
+                <strong>Name:</strong> {{ problem.name }}<br>
+                <strong>Priority:</strong> {{ problem.get_priority_display }}<br>
+            </li>
+                </a>
+            {% endif %}
+        {% empty %}
+            <p>No problems found.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
